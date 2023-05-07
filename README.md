@@ -6,6 +6,7 @@ Projektet kan herefter åbnes i en IDE (fx PyCharm eller Visual Studio Code).
 Før filen main.py kan køres, skal man installere de nødvendige moduller. Dette kan gøres gennem terminalen.
 <br />
 Det første nødvendige modul er NLTK. Man kan finde en detaljeret guide til installationen [her](https://www.guru99.com/download-install-nltk.html).
+<br/>
 Man skal også installere NiceGUI modulet. Dette kan gøres gennem terminalen med: > pip install nicegui
 <br/>
 Ellers kan man besøge NiceGUI's hjemmeside [her](https://nicegui.io/#installation).
