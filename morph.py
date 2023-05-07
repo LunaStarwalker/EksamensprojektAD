@@ -1,30 +1,40 @@
+import nltk
+
 from functionality import Functionality
+from nicegui import ui
+import pandas as pd
 
 class Morph:
 
     def __init__(self, func: Functionality):
         self.f = func
         self.container = ui.column().style("width: 1215px; align-items: center;")
-        self.summarizer = Summarizer(self.f)
+        self.tagged = self.tag_to_dict()
+        self.tagged.apply(self.get_rows)
 
         with self.container:
-            ui.label("Summary Generator").style(
+            ui.label("Morphology").style(
                 "font-size: 30px; font-weight: bold; color: #757575; text-align: center;")
             ui.separator()
-            ui.label("A summary can help you understand the central points of a longer text fast and easy.") \
+            ui.label("Word tagging can help you determine the different word classes used in your text.") \
                 .style("font-size: 20px; color: #757575; text-align: justify;")
-            rec = 0.12 * self.f.get_sent_count()
-            ui.label("Choose the number of lines you want your summary to be. "
-                     "For your text, the recommended number of lines is " + str(int(rec)) + ".") \
-                .style("font-size: 20px; color: #757575; text-align: justify;")
-            number = ui.number(label='No. of lines', format='%.0f',
-                               validation={"Value is too small.": lambda value: value > 0,
-                                           "Not enough lines in original text.": lambda value: value < len(
-                                               self.f.lines)}) \
-                .style("margin-top: 30px;")
-            number.on('update:model-value', lambda x: self.summarize(int(x["args"])))
-            with ui.card().tight().style("padding: 20px"):
-                with ui.card_section():
-                    self.sum = ui.label(self.summarizer.s).style("width: 700px;")
+            columns = [
+                {'name': 'name', 'label': 'Words', 'field': 'name', 'required': True, 'align': 'left'},
+                {'name': 'age', 'label': 'Tag', 'field': 'age', 'sortable': True},
+            ]
+            rows = ""
 
-            ui.button("Save as file", on_click=self.save)
+    def tag_to_dict(self):
+
+        temp = nltk.pos_tag(self.f.df_words)
+        d = []
+
+        for el in temp:
+            d.append(el[1])
+
+        tag = pd.DataFrame({"Words": self.f.df_words, "Tag": d})
+        return tag
+
+    def get_rows(self, n):
+
+        print(type(n[0]))

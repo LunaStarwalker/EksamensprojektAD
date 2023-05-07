@@ -16,7 +16,7 @@ class Plots:
             select = ui.select(["Empty", "Frequency", "Word-Cloud"], value="Empty")
             select.on('update:model-value', lambda x: self.gen_plot(x["args"]['label']))
             self.card = ui.card().tight().style("padding: 20px")
-            ui.button("Save plot", on_click=self.save())
+            ui.button("Save plot", on_click=self.save)
 
     def gen_plot(self, t):
         match t:
@@ -29,24 +29,26 @@ class Plots:
 
     def gen_frequency_plot(self):
         self.card.clear()
-        with self.card:
-            with ui.pyplot(figsize=(3, 2)).style("fill: #ffffff00;"):
-                word_cloud = WordCloud(collocations=False, background_color='black').generate(self.f.string_data)
-                plt.imshow(word_cloud, interpolation='bilinear')
-                plt.axis("off")
+        self.f.df_no_stopwords.nlargest(10, "Frequency").plot(kind="bar", x="Words", y="Frequency",
+                                                              xlabel="Words", ylabel="Frequency")
+        plt.subplots_adjust(bottom=0.3)
+        plt.savefig("files/frequency.png")
+        with self.card.style("width: 700px;"):
+            ui.image("files/frequency.png")
+            with ui.card_section():
+                ui.label("Frequency Plot")
+
 
 
     def gen_word_cloud(self):
         self.card.clear()
-        with self.card:
-            with ui.pyplot(figsize=(9, 6)).style("fill: #ffffff00;"):
-                word_cloud = WordCloud(collocations=False, background_color='black', max_words=130, min_font_size=10)\
-                    .generate(self.f.string_data)
-
-                plt.imshow(word_cloud, interpolation='bilinear')
-                plt.axis("off")
-                with ui.card_section():
-                    ui.label("Word Cloud")
+        wordcloud = WordCloud(collocations=False, background_color='black', max_words=130, min_font_size=10) \
+            .generate(self.f.string_data)
+        wordcloud.to_file("files/wordcloud.png")
+        with self.card.style("width: 700px;"):
+            ui.image("files/wordcloud.png")
+            with ui.card_section():
+                ui.label("Word Cloud")
 
     def save(self):
-        pass
+        ui.notify("Saved successfully in files folder")

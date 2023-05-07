@@ -54,8 +54,6 @@ class Functionality:
         return self.df_no_stopwords.size
 
     def draw_frequency_plot(self, n: int):
-        fig, ax = plt.subplots()
-        self.df_no_stopwords.nlargest(n, "Frequency").plot(ax=ax, kind="bar", xlabel="Words", ylabel="Count")
+        self.df_no_stopwords.nlargest(n, "Frequency").plot(kind="bar", xlabel="Words", ylabel="Frequency")
         plt.show()
-
 

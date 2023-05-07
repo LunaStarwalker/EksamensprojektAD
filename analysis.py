@@ -16,15 +16,12 @@ class Analysis:
         Header()
         with ui.tabs() as tabs:
             ui.tab('Overview')
-            ui.tab('Morphology')
             ui.tab('Summarizer')
             ui.tab('Plots')
 
         with ui.tab_panels(tabs, value='Overview'):
             with ui.tab_panel('Overview'):
                 Overview(self.f)
-            """with ui.tab_panel('Morphology'):
-                Morph(self.f)"""
             with ui.tab_panel('Summarizer'):
                 Summary(self.f)
             with ui.tab_panel('Plots'):
