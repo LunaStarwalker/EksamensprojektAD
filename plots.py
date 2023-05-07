@@ -18,7 +18,7 @@ class Plots:
             self.card = ui.card().tight().style("padding: 20px")
             ui.button("Save plot", on_click=self.save)
 
-    def gen_plot(self, t):
+    def gen_plot(self, t: str):
         match t:
             case "Empty":
                 self.card.clear()

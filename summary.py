@@ -26,16 +26,15 @@ class Summary:
             number.on('update:model-value', lambda x: self.summarize(int(x["args"])))
             with ui.card().tight().style("padding: 20px"):
                 with ui.card_section():
-                    self.sum = ui.label(self.summarizer.s).style("width: 700px;")
+                    self.sum = ui.label("").style("width: 700px;")
 
             ui.button("Save as file", on_click=self.save)
 
     def summarize(self, n: int):
-        self.summarizer.summary(n)
-        self.sum.text = self.summarizer.s
+        self.sum.text = self.summarizer.summary(n)
 
     def save(self):
-        with open("C:/Users/Donap/Documents/GitHub/EksamensprojektAD/files/summary.txt", 'w') as x:
+        with open("/files/summary.txt", 'w') as x:
             x.write(self.sum.text)
 
 

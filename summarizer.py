@@ -9,7 +9,6 @@ class Summarizer:
         self.lines = pd.Series(f.lines)
         self.words_n_freq = f.words_n_freq
         self.lines.apply(self.sent_freq)
-        self.s = ""
 
     def sent_freq(self, sent: str):
         score = 0
@@ -19,8 +18,8 @@ class Summarizer:
 
         self.sentence_score[sent] = score
 
-    def summary(self, n: int):
+    def summary(self, n: int) -> str:
         s = pd.DataFrame.from_dict({"Lines": self.sentence_score.keys(),
                                          "Score": self.sentence_score.values()})
         summary = " ".join(s.nlargest(n, "Score")["Lines"])
-        self.s = summary
+        return summary
