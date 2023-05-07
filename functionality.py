@@ -57,3 +57,15 @@ class Functionality:
         self.df_no_stopwords.nlargest(n, "Frequency").plot(kind="bar", xlabel="Words", ylabel="Frequency")
         plt.show()
 
+    def get_lixtal(self) -> float:
+        long_words = []
+        for word in self.df_words:
+            if len(word) > 6:
+                long_words.append(word)
+        long_word_amount = len(long_words)
+
+        lixtal = self.get_word_count() / self.get_sent_count() + (long_word_amount * 100 / self.get_word_count())
+        print(lixtal)
+        return lixtal
+
+

@@ -17,13 +17,13 @@ class Overview:
                 .style("font-size: 20px; color: #757575; text-align: justify;")
             with ui.card().tight():
                 with ui.card_section():
-                    with ui.row():
-                        ui.label("Word-count: " + str(self.f.get_word_count()))\
-                            .style("font-size: 20px; color: #757575; text-align: justify;")
-                        ui.label("Word-count w/o stopwords: " + str(self.f.get_word_count_no_stopwords()))\
-                            .style("font-size: 20px; color: #757575; text-align: justify;")
-                    with ui.row():
-                        ui.label("Line-count: " + str(self.f.get_sent_count())) \
-                            .style("margin-top: 20px; font-size: 20px; color: #757575; text-align: justify;")
+                    ui.label("Word-count: " + str(self.f.get_word_count()))\
+                        .style("font-size: 20px; color: #757575; text-align: justify;")
+                    ui.label("Word-count w/o stopwords: " + str(self.f.get_word_count_no_stopwords()))\
+                        .style("margin-top: 20px; font-size: 20px; color: #757575; text-align: justify;")
+                    ui.label("Line-count: " + str(self.f.get_sent_count()))\
+                        .style("margin-top: 20px; font-size: 20px; color: #757575; text-align: justify;")
+                    ui.label("Lix score: " + str(int(self.f.get_lixtal())))\
+                        .style("margin-top: 20px; font-size: 20px; color: #757575; text-align: justify;")
 
 
