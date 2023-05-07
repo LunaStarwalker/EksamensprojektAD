@@ -11,11 +11,15 @@ Man skal også installere NiceGUI modulet. Dette kan gøres gennem terminalen me
 Ellers kan man besøge NiceGUI's hjemmeside [her](https://nicegui.io/#installation).
 <br/>
 Man skal også bruge numpy, pandas, matplotlib og wordcloud.
-En guide til numpy installation kan findes [her](https://numpy.org/install/)
-En guide til pandas installation kan findes [her](https://pandas.pydata.org/docs/getting_started/install.html)
-En guide til matplotlib installation kan findes [her](https://matplotlib.org/stable/users/installing/index.html)
-En guide til wordcloud installation kan findes [her](https://pypi.org/project/wordcloud/)
-
+<br/>
+En guide til numpy installation kan findes [her](https://numpy.org/install/).
+<br/>
+En guide til pandas installation kan findes [her](https://pandas.pydata.org/docs/getting_started/install.html).
+<br/>
+En guide til matplotlib installation kan findes [her](https://matplotlib.org/stable/users/installing/index.html).
+<br/>
+En guide til wordcloud installation kan findes [her](https://pypi.org/project/wordcloud/).
+<br/>
 Herefter kan main.py køres. Programmet åbnes i en browser men behøver ikke internetforbindelse.
 
 
