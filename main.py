@@ -2,13 +2,16 @@ from analysis import Analysis
 from start import Start_Page
 from nicegui import ui
 
-@ui.page('/')
-def start():
-    Start_Page()
+
+if __name__ == "__main__":
+
+    @ui.page('/')
+    def start():
+        Start_Page()
 
 
-@ui.page('/analysis')
-def analysis():
-    Analysis()
+    @ui.page('/analysis')
+    def analysis():
+        Analysis()
 
-ui.run(port=4040)
+    ui.run(port=4040)

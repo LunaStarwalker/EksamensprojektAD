@@ -23,3 +23,4 @@ class Summarizer:
                                          "Score": self.sentence_score.values()})
         summary = " ".join(s.nlargest(n, "Score")["Lines"])
         return summary
+

@@ -34,8 +34,10 @@ class Summary:
         self.sum.text = self.summarizer.summary(n)
 
     def save(self):
-        with open("/files/summary.txt", 'w') as x:
+        with open("files/summary.txt", 'w') as x:
             x.write(self.sum.text)
+
+        ui.notify("Saved successfully in files folder")
 
 
 
