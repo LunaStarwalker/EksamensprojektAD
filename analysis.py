@@ -26,3 +26,5 @@ class Analysis:
             with ui.tab_panel('Plots'):
                 Plots(self.f)
 
+
+

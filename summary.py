@@ -27,7 +27,6 @@ class Summary:
             with ui.card().tight().style("padding: 20px"):
                 with ui.card_section():
                     self.sum = ui.label("").style("width: 700px;")
-
             ui.button("Save as file", on_click=self.save)
 
     def summarize(self, n: int):
@@ -36,7 +35,6 @@ class Summary:
     def save(self):
         with open("files/summary.txt", 'w') as x:
             x.write(self.sum.text)
-
         ui.notify("Saved successfully in files folder")
 
 
