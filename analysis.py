@@ -1,6 +1,6 @@
 from nicegui import ui
 from header import Header
-from process import Overview
+from overview import Overview
 from summary import Summary
 from plots import Plots
 from functionality import Functionality
